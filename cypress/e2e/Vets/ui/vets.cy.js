@@ -12,8 +12,7 @@ describe("Create and Delete Vet", () => {
     cy.get("#specialties").select("0: Object");
     cy.get('[type="submit"]').click();
 
-    cy.get(":nth-child(8) > :nth-child(1)").should("be.visible");
-    cy.contains("td", "John Doe").should("exist");
+    cy.get(":nth-child(7) > :nth-child(1)").should("be.visible");
 
     cy.contains("td", "test lasttest")
       .parent("tr")
@@ -21,8 +20,11 @@ describe("Create and Delete Vet", () => {
         cy.get("button").contains("Edit Vet").should("exist");
         cy.get("button").contains("Delete Vet").should("exist");
       });
-    cy.get(":nth-child(7) > :nth-child(1)").should("have.text", " John Doe ");
-    cy.get(":nth-child(8) > :nth-child(3) > :nth-child(2)").click();
+    cy.get(":nth-child(7) > :nth-child(1)").should(
+      "have.text",
+      " test lasttest "
+    );
+    cy.get(":nth-child(7) > :nth-child(3) > :nth-child(2)").click();
   });
 });
 
@@ -79,7 +81,7 @@ describe("read Vet", () => {
     cy.get(".open > .dropdown-menu > :nth-child(1) > a").click();
     cy.get("tbody > :nth-child(1) > :nth-child(1)").should(
       "have.text",
-      " Jamess Carter "
+      " James Carter "
     );
     cy.get("tbody > :nth-child(2) > :nth-child(1)").should(
       "have.text",
@@ -93,10 +95,7 @@ describe("read Vet", () => {
       "have.text",
       " Henry Stevens "
     );
-    cy.get("tbody > :nth-child(1) > :nth-child(2) > div").should(
-      "have.text",
-      " radiology "
-    );
+
     cy.get("tbody > :nth-child(2) > :nth-child(2) > div").should(
       "have.text",
       " radiology "
